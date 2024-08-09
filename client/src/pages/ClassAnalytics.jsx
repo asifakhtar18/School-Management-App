@@ -5,17 +5,26 @@ import { useParams } from "react-router-dom";
 const ClassAnalytics = () => {
   const { id } = useParams();
   const [classData, setClassData] = useState(null);
+  const token = JSON.parse(localStorage.getItem("user")).token;
+
+  const fetchClassData = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/analytics/class/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setClassData(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
-    const fetchClassData = async () => {
-      try {
-        const response = await axios.get(`/api/analytics/class/${id}`);
-        setClassData(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchClassData();
   }, [id]);
 

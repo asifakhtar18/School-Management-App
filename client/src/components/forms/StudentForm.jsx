@@ -52,6 +52,7 @@ const StudentForm = ({ currentStudent, setCurrentStudent, classes }) => {
     if (currentStudent) {
       await handleUpdateStudent(currentStudent._id, formData);
     } else {
+      console.log(formData);
       await handleCreateStudent(formData);
     }
     setCurrentStudent(null);
@@ -73,10 +74,6 @@ const StudentForm = ({ currentStudent, setCurrentStudent, classes }) => {
       onSubmit={handleSubmit}
       sx={{ p: 4, backgroundColor: "white", borderRadius: 1.5, boxShadow: 1 }}
     >
-      <Typography variant="h6" gutterBottom>
-        {currentStudent ? "Update Student" : "Create Student"}
-      </Typography>
-
       <Box mb={2}>
         <TextField
           label="Name"
@@ -158,7 +155,17 @@ const StudentForm = ({ currentStudent, setCurrentStudent, classes }) => {
       </Box>
 
       <Button
-        sx={{ textTransform: "none" }}
+        fullWidth
+        sx={{
+          textTransform: "none",
+          mt: 1,
+          background: "#202020",
+          color: "#f0f0f0",
+          "&:hover": {
+            background: "black",
+            color: "#f0f0f0",
+          },
+        }}
         type="submit"
         variant="contained"
         color={!currentStudent ? "success" : "primary"}

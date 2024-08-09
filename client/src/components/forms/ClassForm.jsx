@@ -69,10 +69,6 @@ const ClassForm = ({ currentClass, setCurrentClass }) => {
       onSubmit={handleSubmit}
       sx={{ p: 4, backgroundColor: "white", borderRadius: 1.5, boxShadow: 1 }}
     >
-      <Typography variant="h6">
-        {currentClass ? "Update Class" : "Create Class"}
-      </Typography>
-
       <Box mb={2}>
         <TextField
           label="Name"
@@ -97,7 +93,7 @@ const ClassForm = ({ currentClass, setCurrentClass }) => {
         />
       </Box>
       <Box mb={2}>
-        <FormControl fullWidth variant="outlined" required>
+        <FormControl fullWidth variant="outlined">
           <InputLabel>Teacher</InputLabel>
           <Select
             label="Teacher"
@@ -127,10 +123,20 @@ const ClassForm = ({ currentClass, setCurrentClass }) => {
       </Box>
       <Box mt={3}>
         <Button
+          fullWidth
           type="submit"
           variant="contained"
           color={!currentClass ? "success" : "primary"}
-          sx={{ textTransform: "none" }}
+          sx={{
+            textTransform: "none",
+            mt: 1,
+            background: "#202020",
+            color: "#f0f0f0",
+            "&:hover": {
+              background: "black",
+              color: "#f0f0f0",
+            },
+          }}
         >
           {currentClass ? "Update" : "Create"} Class
         </Button>

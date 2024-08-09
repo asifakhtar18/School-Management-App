@@ -6,6 +6,7 @@ const authRoutes = require("./routes/authRoutes");
 const classRoutes = require("./routes/classRoutes");
 const teacherRoutes = require("./routes/teacherRoutes");
 const studentRoutes = require("./routes/studentRoutes");
+const analyticsRoutes = require("./routes/analyticsRoutes");
 
 require("dotenv").config();
 
@@ -27,6 +28,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/classes", classRoutes);
 app.use("/api/teachers", teacherRoutes);
 app.use("/api/students", studentRoutes);
+app.use("/api/analytics", analyticsRoutes);
 
 const PORT = process.env.PORT || 5000;
 

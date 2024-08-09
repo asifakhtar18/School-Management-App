@@ -36,7 +36,6 @@ const TeacherForm = ({ currentTeacher, setCurrentTeacher, classes }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (currentTeacher) {
-      // console.log(formData);
       await updateTeacher(currentTeacher._id, formData);
     } else {
       await createTeacher(formData);
@@ -129,10 +128,20 @@ const TeacherForm = ({ currentTeacher, setCurrentTeacher, classes }) => {
         </Select>
       </FormControl>
       <Button
+        fullWidth
         type="submit"
         variant="contained"
         color={!currentTeacher ? "success" : "primary"}
-        sx={{ textTransform: "none", mt: 1 }}
+        sx={{
+          textTransform: "none",
+          mt: 1,
+          background: "#202020",
+          color: "#f0f0f0",
+          "&:hover": {
+            background: "black",
+            color: "#f0f0f0",
+          },
+        }}
       >
         {currentTeacher ? "Update" : "Create"} Class
       </Button>

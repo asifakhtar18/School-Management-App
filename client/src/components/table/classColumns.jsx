@@ -1,15 +1,4 @@
-import { Link, Typography } from "@mui/material";
-import { useTeachers } from "../../context/TeachersContext";
-
-const FindTeacherName = (teacherId) => {
-  const { teachers } = useTeachers();
-
-  // console.log(teacherId, teachers);
-
-  const teacher = teachers.find((t) => t._id === teacherId);
-
-  return <Typography>{teacher?.name}</Typography>;
-};
+import { Link } from "@mui/material";
 
 const classColumns = [
   {
@@ -23,11 +12,15 @@ const classColumns = [
   {
     Header: "Teacher",
     accessor: "teacher",
-    Cell: ({ value }) => FindTeacherName(value),
+    Cell: ({ value }) => value?.name,
   },
   {
     Header: "Fees",
     accessor: "fees",
+  },
+  {
+    Header: "Actions",
+    Cell: ({ row }) => <Link href={`/class/${row.original._id}`}>View</Link>,
   },
 ];
 

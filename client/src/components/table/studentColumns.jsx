@@ -31,7 +31,8 @@ const studentColumns = [
   },
   {
     Header: "Class Enrolled",
-    accessor: "assignedClass",
+    accessor: "class",
+    Cell: ({ value }) => value?.name,
   },
 ];
 

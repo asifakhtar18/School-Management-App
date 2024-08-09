@@ -15,7 +15,7 @@ export const StudentProvider = ({ children }) => {
 
   const fetchStudents = async (page) => {
     const data = await getAllStudents(page);
-    console.log(data);
+
     setStudents(data.students);
     setCount(data.totalPages);
   };

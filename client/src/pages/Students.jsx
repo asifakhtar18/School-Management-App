@@ -14,12 +14,12 @@ export default function Students() {
   const [currentStudent, setCurrentStudent] = useState(null);
   const [classData, setClassData] = useState([]);
 
+  console.log(data);
+
   const { openModal, setOpenModal } = useApp();
 
   const { students, page, count, handleDeleteStudent } = useStudent();
   const { classes } = useClasses();
-
-  console.log(students, page, count, classes);
 
   useEffect(() => {
     setClassData(classes);

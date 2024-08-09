@@ -16,7 +16,7 @@ import { useApp } from "../context/AppContext";
 export default function Classes() {
   const [data, setData] = useState([]);
   const [currentClass, setCurrentClass] = useState(null);
-
+  console.log(data);
   const { teachers } = useTeachers();
   const { openModal, setOpenModal } = useApp();
   const { classes, page, setPage, count, handleDeleteClass } = useClasses();
