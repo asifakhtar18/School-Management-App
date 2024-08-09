@@ -1,6 +1,9 @@
 import axios from "axios";
+import { BASE_URL } from "../utils/constants";
 
-const API_URL = "http://localhost:5000/api/teachers";
+const API_URL = `${BASE_URL}/api/teachers`;
+
+// const API_URL = "http://localhost:5000/api/teachers";
 
 const handleError = (error) => {
   if (error.response) {

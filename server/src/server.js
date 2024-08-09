@@ -18,7 +18,7 @@ connectDB();
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://school-management-app-client.vercel.app",
   })
 );
 app.use(express.json());

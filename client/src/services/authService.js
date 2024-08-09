@@ -1,6 +1,7 @@
 import axios from "axios";
+import { BASE_URL } from "../utils/constants";
 
-const API_URL = "http://localhost:5000/api/auth";
+const API_URL = `${BASE_URL}/api/auth`;
 
 export const login = async (formData) => {
   try {

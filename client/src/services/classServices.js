@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/classes";
+import { BASE_URL } from "../utils/constants";
+
+const API_URL = `${BASE_URL}/api/classes`;
+
+// const API_URL = "http://localhost:5000/api/classes";
 
 const handleError = (error) => {
   if (error.response) {
