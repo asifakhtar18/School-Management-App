@@ -30,6 +30,10 @@ app.use("/api/teachers", teacherRoutes);
 app.use("/api/students", studentRoutes);
 app.use("/api/analytics", analyticsRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
