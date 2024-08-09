@@ -6,7 +6,7 @@ export const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [openModal, setOpenModal] = useState(false);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const [user, setUser] = useState();
 
   const navigate = useNavigate();
 

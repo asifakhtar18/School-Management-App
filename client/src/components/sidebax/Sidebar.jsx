@@ -11,7 +11,8 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import SideBarItem from "./SidebarItem";
 
 const SideBar = () => {
-  const user = JSON.parse(localStorage.getItem("user"));
+  const userJSON = localStorage.getItem("user");
+  const user = userJSON ? JSON.parse(userJSON) : null;
 
   const handleLogout = () => {
     localStorage.removeItem("user");

@@ -20,21 +20,26 @@ const handleError = (error) => {
 };
 
 export const getAllClasses = async (page = 1, limit = 6) => {
-  try {
-    const { token } = JSON.parse(localStorage.getItem("user"));
-    if (!token) {
-      throw new Error("Not authorized, no token");
-    }
+  if (localStorage.getItem("user")) {
+    try {
+      const { token } = JSON.parse(localStorage.getItem("user"));
+      if (!token) {
+        throw new Error("Not authorized, no token");
+      }
 
-    const response = await axios.get(`${API_URL}?page=${page}&limit=${limit}`, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response.data;
-  } catch (error) {
-    handleError(error);
+      const response = await axios.get(
+        `${API_URL}?page=${page}&limit=${limit}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      handleError(error);
+    }
   }
 };
 
