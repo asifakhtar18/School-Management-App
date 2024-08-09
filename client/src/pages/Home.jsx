@@ -4,8 +4,8 @@ export default function Home() {
   const { user } = useApp();
   const nameArr = user?.name.split(" ");
   const updatedName = nameArr
-    .map((name) => name.charAt(0).toUpperCase() + name.slice(1))
-    .join(" ");
+    ?.map((name) => name?.charAt(0)?.toUpperCase() + name?.slice(1))
+    ?.join(" ");
 
   return (
     <Box
@@ -18,7 +18,6 @@ export default function Home() {
     >
       <Typography variant="h4" sx={{ fontWeight: "bold", padding: "10px" }}>
         Welcome , {updatedName}!
-        <br />
       </Typography>
     </Box>
   );
