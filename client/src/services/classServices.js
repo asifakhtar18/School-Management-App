@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/classes";
+const API_URL = "https://school-management-app-server.vercel.app/api/classes";
 
 export const getAllClasses = async (page = 1, limit = 6) => {
   const data = await axios.get(`${API_URL}?page=${page}&limit=${limit}`);

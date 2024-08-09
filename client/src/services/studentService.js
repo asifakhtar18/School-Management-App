@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/students";
+const API_URL = "https://school-management-app-server.vercel.app/api/students";
 
 export const getAllStudents = async (page = 1, limit = 6) => {
   try {
