@@ -11,6 +11,11 @@ const AppProvider = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    localStorage.getItem("user") &&
+      setUser(JSON.parse(localStorage.getItem("user")));
+  }, []);
+
+  useEffect(() => {
     if (user) {
       console.log(user);
       navigate("/");

@@ -8,6 +8,7 @@ import BasicModal from "../components/modals/Modal";
 import TableHeading from "../components/TableHeading";
 import { useApp } from "../context/AppContext";
 import { useStudent } from "../context/StudentContext";
+import { motion } from "framer-motion";
 
 export default function Students() {
   const [data, setData] = useState([]);
@@ -43,14 +44,21 @@ export default function Students() {
         heading="Students"
         onclick={() => setOpenModal(true)}
       />
-      <Table
-        data={data || []}
-        page={page}
-        count={count}
-        columns={studentColumns}
-        onEdit={setCurrentStudent}
-        onDelete={handleDeleteStudent}
-      />
+      <Box
+        component={motion.div}
+        initial={{ opacity: 0.3, scale: 0.7 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ type: "tween", duration: 0.5 }}
+      >
+        <Table
+          data={data || []}
+          page={page}
+          count={count}
+          columns={studentColumns}
+          onEdit={setCurrentStudent}
+          onDelete={handleDeleteStudent}
+        />
+      </Box>
     </Box>
   );
 }

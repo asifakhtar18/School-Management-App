@@ -1,23 +1,11 @@
 import axios from "axios";
+import { handleError } from "../utils/errorHandler";
 
 import { BASE_URL } from "../utils/constants";
 
 const API_URL = `${BASE_URL}/api/students`;
 
 // const API_URL = "http://localhost:5000/api/students";
-
-const handleError = (error) => {
-  if (error.response) {
-    console.error("Error response:", error.response.data);
-    throw new Error(error.response.data.message || "An error occurred");
-  } else if (error.request) {
-    console.error("Error request:", error.request);
-    throw new Error("No response received from server");
-  } else {
-    console.error("Error message:", error.message);
-    throw new Error("Error in setting up the request");
-  }
-};
 
 export const getAllStudents = async (page = 1, limit = 6) => {
   try {

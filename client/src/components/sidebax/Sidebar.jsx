@@ -1,5 +1,5 @@
 import { Avatar, Box, Button, Typography } from "@mui/material";
-
+import { MdSchool } from "react-icons/md";
 import HomeIcon from "@mui/icons-material/Home";
 import { PiStudent } from "react-icons/pi";
 import { MdClass } from "react-icons/md";
@@ -40,11 +40,16 @@ const SideBar = () => {
             borderBottom: "1px solid #c0c0c0",
           }}
         >
-          <Avatar
-            sx={{ width: "30px", height: "30px" }}
-            src={
-              "https://img.freepik.com/free-photo/colorful-design-with-spiral-design_188544-9588.jpg"
-            }
+          <MdSchool
+            style={{
+              width: "60px",
+              height: "60px",
+              color: "#464846",
+              borderRadius: "50%",
+              padding: "10",
+              backgroundColor: "#e0e0e0",
+              border: "1px solid #d6d6d6",
+            }}
           />
           <Typography sx={{ fontWeight: "bold", padding: "10px" }}>
             {user?.name.toUpperCase()}
@@ -82,13 +87,15 @@ const SideBar = () => {
               display: "flex",
               alignItems: "center",
               justifyContent: "space-between",
-              border: "1px solid #DDDDDD",
-              backgroundColor: "#f0f0f0",
-              color: "gray",
+
+              backgroundColor: "#ff6a6a",
+              color: "white",
               cursor: "pointer",
               textTransform: "none",
               position: "absolute",
               bottom: "10px",
+              opacity: "0.7",
+              boxShadow: 0,
             }}
             onClick={handleLogout}
           >

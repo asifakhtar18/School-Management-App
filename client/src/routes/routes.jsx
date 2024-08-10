@@ -12,13 +12,13 @@ import ClassAnalytics from "../pages/ClassAnalytics";
 const Routes = () => {
   return useRoutes([
     { path: "/", element: <Home /> },
+    { path: "class/:id", element: <ClassAnalytics /> },
     { path: "/login", element: <Login /> },
     { path: "/register", element: <Register /> },
     { path: "/classes", element: <Classes /> },
     { path: "/students", element: <Students /> },
     { path: "/teachers", element: <Teachers /> },
     { path: "/analytics", element: <IncomeExpenseAnalytics /> },
-    { path: "class/:id", element: <ClassAnalytics /> },
   ]);
 };
 

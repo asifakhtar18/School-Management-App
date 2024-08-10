@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Box, Typography, CircularProgress } from "@mui/material";
+import { motion } from "framer-motion";
+import { Pie } from "react-chartjs-2";
+import "chart.js/auto";
 
 const ClassAnalytics = () => {
   const { id } = useParams();
@@ -26,22 +30,78 @@ const ClassAnalytics = () => {
 
   useEffect(() => {
     fetchClassData();
-  }, [id]);
+  }, []);
 
   if (!classData) {
-    return <div>Loading...</div>;
+    return (
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="100vh"
+      >
+        <CircularProgress />
+      </Box>
+    );
   }
 
+  const pieData = {
+    labels: ["Male Students", "Female Students"],
+    datasets: [
+      {
+        data: [classData.maleCount, classData.femaleCount],
+        backgroundColor: ["#42A5F5", "#FF6384"],
+        hoverBackgroundColor: ["#64B5F6", "#FF7A9B"],
+      },
+    ],
+  };
+
   return (
-    <div>
-      <h1>Class Analytics</h1>
-      <p>Name: {classData.name}</p>
-      <p>Year: {classData.year}</p>
-      <p>Teacher: {classData.teacher.name}</p>
-      <p>Students: {classData.students.length}</p>
-      <p>Male Students: {classData.maleCount}</p>
-      <p>Female Students: {classData.femaleCount}</p>
-    </div>
+    <Box
+      component={motion.div}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      sx={{ p: 4 }}
+    >
+      <Typography
+        variant="h4"
+        component={motion.h4}
+        initial={{ x: -200 }}
+        animate={{ x: 0 }}
+        transition={{ type: "spring", stiffness: 50 }}
+        sx={{ mb: 2, textAlign: "center" }}
+      >
+        Class Analytics : {classData.className}
+      </Typography>
+      <Typography
+        variant="h5"
+        component={motion.h5}
+        initial={{ x: 200 }}
+        animate={{ x: 0 }}
+        transition={{ type: "spring", stiffness: 50 }}
+        sx={{ mb: 4 }}
+      >
+        Total Students : {classData.maleCount + classData.femaleCount}
+        <br />
+        Male : {classData.maleCount} Female : {classData.femaleCount}
+      </Typography>
+      <Box
+        component={motion.div}
+        initial={{ scale: 0.8 }}
+        animate={{ scale: 1 }}
+        transition={{ type: "inertia", stiffness: 100 }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          width: "400px",
+          height: "400px",
+          mx: "auto",
+        }}
+      >
+        <Pie data={pieData} />
+      </Box>
+    </Box>
   );
 };
 

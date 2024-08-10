@@ -6,12 +6,16 @@ import {
   updateTeacher,
 } from "../services/teacherService";
 
+import { useApp } from "./AppContext";
+
 const TeachersContext = createContext();
 
 export const TeachersProvider = ({ children }) => {
   const [teachers, setTeachers] = useState([]);
   const [count, setCount] = useState(1);
   const [page, setPage] = useState(1);
+
+  const { user } = useApp();
 
   const fetchTeachers = async () => {
     const data = await getAllTeachers(page);
@@ -36,7 +40,7 @@ export const TeachersProvider = ({ children }) => {
 
   useEffect(() => {
     fetchTeachers();
-  }, [page]);
+  }, [page, user]);
 
   return (
     <TeachersContext.Provider

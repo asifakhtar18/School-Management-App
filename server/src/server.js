@@ -16,11 +16,18 @@ const app = express();
 connectDB();
 
 // Middleware
+
 app.use(
   cors({
-    origin: "https://school-management-app-client.vercel.app",
+    origin: [
+      "https://school-management-app-client.vercel.app",
+      "http://localhost:5173",
+    ],
   })
 );
+
+app.use(express.urlencoded({ extended: true }));
+
 app.use(express.json());
 
 // Routes

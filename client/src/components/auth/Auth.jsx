@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 
 import { useApp } from "../../context/AppContext";
 
@@ -42,6 +43,10 @@ export default function Auth({ isRegister = false }) {
 
   return (
     <Box
+      component={motion.div}
+      initial={{ opacity: 0.3, x: 150 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ type: "tween", duration: 0.7 }}
       sx={{
         display: "flex",
         background: "#f0f0f0",

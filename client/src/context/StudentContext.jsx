@@ -6,12 +6,16 @@ import {
   updateStudent,
 } from "../services/studentService";
 
+import { useApp } from "./AppContext";
+
 const studentContext = createContext();
 
 export const StudentProvider = ({ children }) => {
   const [students, setStudents] = useState([]);
   const [count, setCount] = useState(0);
   const [page, setPage] = useState(1);
+
+  const { user } = useApp();
 
   const fetchStudents = async (page) => {
     const data = await getAllStudents(page);
@@ -37,7 +41,7 @@ export const StudentProvider = ({ children }) => {
 
   useEffect(() => {
     fetchStudents(page);
-  }, [page]);
+  }, [page, user]);
 
   return (
     <studentContext.Provider

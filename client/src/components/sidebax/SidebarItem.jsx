@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const SideBarItem = ({ icon, text, pathName }) => {
   const location = useLocation();
@@ -19,15 +20,15 @@ const SideBarItem = ({ icon, text, pathName }) => {
         padding: "10px",
         cursor: "pointer",
         marginTop: "10px",
-        backgroundColor: isSelected ? "#f5f5f5" : "transparent",
+        backgroundColor: isSelected ? "#e0e0e0" : "transparent",
         "&:hover": {
-          backgroundColor: "#f5f5f5",
+          backgroundColor: "#e0e0e0",
           color: "#626367",
           borderRadius: "10px",
-          border: "1px solid #DDDDDD",
+          border: "1px solid #d6d6d6",
         },
         borderRadius: isSelected ? "10px" : "0px",
-        border: isSelected ? "1px solid #DDDDDD" : "none",
+        border: isSelected ? "1px solid #d6d6d6" : "none",
       }}
       onClick={handleClick}
     >

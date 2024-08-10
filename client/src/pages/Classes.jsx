@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
+import { motion } from "framer-motion";
 
 import Table from "../components/table/Table";
 import ClassForm from "../components/forms/ClassForm";
@@ -57,16 +58,22 @@ export default function Classes() {
         heading="Classes"
         onclick={() => setOpenModal(true)}
       />
-
-      <Table
-        data={data ? data : []}
-        columns={classColumns}
-        count={count}
-        page={page}
-        onPageChange={setPage}
-        onEdit={(row) => setCurrentClass(row)}
-        onDelete={(id) => handleDeleteClass(id)}
-      />
+      <Box
+        component={motion.div}
+        initial={{ opacity: 0.3, scale: 0.7 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ type: "tween", duration: 0.5 }}
+      >
+        <Table
+          data={data ? data : []}
+          columns={classColumns}
+          count={count}
+          page={page}
+          onPageChange={setPage}
+          onEdit={(row) => setCurrentClass(row)}
+          onDelete={(id) => handleDeleteClass(id)}
+        />
+      </Box>
     </Box>
   );
 }

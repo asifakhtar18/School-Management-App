@@ -6,6 +6,8 @@ import {
   updateClass,
 } from "../services/classServices";
 
+import { useApp } from "./AppContext";
+
 const ClassesContext = createContext();
 
 export const ClassesProvider = ({ children }) => {
@@ -13,6 +15,8 @@ export const ClassesProvider = ({ children }) => {
   const [currentClass, setCurrentClass] = useState(null);
   const [page, setPage] = useState(1);
   const [count, setCount] = useState(0); // Total pages count
+
+  const { user } = useApp();
 
   const fetchClassesData = async (page) => {
     const data = await getAllClasses(page);
@@ -37,7 +41,7 @@ export const ClassesProvider = ({ children }) => {
 
   useEffect(() => {
     fetchClassesData(page);
-  }, [page]);
+  }, [page, user]);
 
   return (
     <ClassesContext.Provider

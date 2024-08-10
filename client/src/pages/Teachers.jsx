@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+import { Box, Typography } from "@mui/material";
+import { motion } from "framer-motion";
+
 import TeacherForm from "../components/forms/TeacherForm";
 import teacherColumns from "../components/table/teacherColumns";
 import { useClasses } from "../context/ClassContext";
 import Table from "../components/table/Table";
 import { useTeachers } from "../context/TeachersContext";
-import { Box, Typography } from "@mui/material";
 import LargeButton from "../components/buttons/LargeButton";
 import Modal from "../components/modals/Modal";
 import { useApp } from "../context/AppContext";
@@ -50,16 +52,22 @@ export default function Teacher() {
           onClick={handleClick}
         />
       </Box>
-
-      <Table
-        data={data}
-        columns={teacherColumns}
-        page={page}
-        count={count}
-        onPageChange={setPage}
-        onEdit={(data) => setCurrentTeacher(data)}
-        onDelete={handleDeleteTeacher}
-      />
+      <Box
+        component={motion.div}
+        initial={{ opacity: 0.3, scale: 0.7 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ type: "tween", duration: 0.5 }}
+      >
+        <Table
+          data={data}
+          columns={teacherColumns}
+          page={page}
+          count={count}
+          onPageChange={setPage}
+          onEdit={(data) => setCurrentTeacher(data)}
+          onDelete={handleDeleteTeacher}
+        />
+      </Box>
     </Box>
   );
 }

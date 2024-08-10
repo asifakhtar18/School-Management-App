@@ -70,6 +70,7 @@ const Table = ({ data, columns, onEdit, onDelete, count, onPageChange }) => {
                   <TableRow
                     sx={{
                       backgroundColor: idx % 2 === 0 ? "#f8f8f8" : "white",
+                      "&:last-child td, &:last-child th": { border: 0 },
                     }}
                     {...row.getRowProps()}
                     key={row.id}
@@ -80,22 +81,46 @@ const Table = ({ data, columns, onEdit, onDelete, count, onPageChange }) => {
                       </TableCell>
                     ))}
                     <TableCell>
-                      <IconButton
+                      <Button
+                        sx={{
+                          background: "#f0f0f0",
+                          fontSize: "12px",
+                          border: "0.5px solid black",
+                          color: "#202020",
+
+                          ":hover": {
+                            backgroundColor: "#202020",
+                            color: "#f0f0f0",
+                          },
+                        }}
+                        variant="outlined"
+                        endIcon={<EditIcon />}
                         onClick={() => {
                           onEdit(row.original);
                           setOpenModal(true);
                         }}
-                        color="primary"
                       >
-                        <EditIcon />
-                      </IconButton>
-                      <IconButton
+                        Edit
+                      </Button>
+                      <Button
+                        variant="outlined"
+                        sx={{
+                          background: "#f0f0f0",
+                          fontSize: "12px",
+                          marginLeft: "10px",
+                          border: "0.5px solid #ff5482",
+                          color: "#ff5482",
+                          ":hover": {
+                            backgroundColor: "#ff5482",
+                            color: "#f0f0f0",
+                          },
+                        }}
+                        endIcon={<DeleteIcon />}
                         onClick={() => onDelete(row.original._id)}
-                        variant="contained"
                         color="error"
                       >
-                        <DeleteIcon />
-                      </IconButton>
+                        Delete
+                      </Button>
                     </TableCell>
                   </TableRow>
                 );
