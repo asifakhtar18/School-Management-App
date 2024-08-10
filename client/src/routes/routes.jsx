@@ -1,3 +1,4 @@
+import React from "react";
 import { useRoutes } from "react-router-dom";
 
 import Login from "../pages/Login";
@@ -10,7 +11,7 @@ import IncomeExpenseAnalytics from "../pages/ExpenseAnalytics";
 import ClassAnalytics from "../pages/ClassAnalytics";
 
 const Routes = () => {
-  return useRoutes([
+  const element = useRoutes([
     { path: "/", element: <Home /> },
     { path: "class/:id", element: <ClassAnalytics /> },
     { path: "/login", element: <Login /> },
@@ -20,6 +21,9 @@ const Routes = () => {
     { path: "/teachers", element: <Teachers /> },
     { path: "/analytics", element: <IncomeExpenseAnalytics /> },
   ]);
+  return (
+    <React.Suspense fallback={<div>Loading...</div>}>{element}</React.Suspense>
+  );
 };
 
 export default Routes;
