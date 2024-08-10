@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import {
   Container,
@@ -6,14 +6,14 @@ import {
   Select,
   MenuItem,
   TextField,
-  Paper,
   Box,
   CircularProgress,
-  Grid,
 } from "@mui/material";
 import { Bar } from "react-chartjs-2";
 import "chart.js/auto";
 import { motion } from "framer-motion";
+
+import { BASE_URL } from "../utils/constants";
 
 const IncomeExpenseAnalytics = () => {
   const [data, setData] = useState(null);
@@ -27,7 +27,7 @@ const IncomeExpenseAnalytics = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/analytics/income-expense?period=${view}&year=${year}&month=${month}`,
+        `${BASE_URL}/api/analytics/income-expense?period=${view}&year=${year}&month=${month}`,
         {
           headers: {
             "Content-Type": "application/json",

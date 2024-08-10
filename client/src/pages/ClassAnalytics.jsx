@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import { Pie } from "react-chartjs-2";
 import "chart.js/auto";
 
+import { BASE_URL } from "../utils/constants";
+
 const ClassAnalytics = () => {
   const { id } = useParams();
   const [classData, setClassData] = useState(null);
@@ -14,7 +16,7 @@ const ClassAnalytics = () => {
   const fetchClassData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/analytics/class/${id}`,
+        `${BASE_URL}/api/analytics/class/${id}`,
         {
           headers: {
             "Content-Type": "application/json",
