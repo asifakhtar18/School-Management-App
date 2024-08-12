@@ -26,6 +26,10 @@ const AppProvider = ({ children }) => {
 
   const handleLogin = async (email, password) => {
     const data = await login(email, password);
+    console.log(data);
+    if (data.error) {
+      return data;
+    }
     localStorage.setItem("user", JSON.stringify(data));
     setUser(data);
     return data;
@@ -33,6 +37,9 @@ const AppProvider = ({ children }) => {
 
   const handleRegister = async (name, email, password) => {
     const data = await register(name, email, password);
+    if (data.error) {
+      return data;
+    }
     localStorage.setItem("user", JSON.stringify(data));
     setUser(data);
     return data;

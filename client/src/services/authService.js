@@ -11,7 +11,7 @@ export const login = async (formData) => {
     return data.data;
   } catch (error) {
     console.log(error);
-    return error.response.data;
+    return { error: error.response.data };
   }
 };
 
@@ -23,6 +23,6 @@ export const register = async (formData) => {
     return data.data;
   } catch (error) {
     console.log(error);
-    return error.response.data;
+    return { error: error.response.data };
   }
 };

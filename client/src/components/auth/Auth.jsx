@@ -13,6 +13,8 @@ export default function Auth({ isRegister = false }) {
     confirmPassword: "",
   });
 
+  const [errors, setErrors] = useState(null);
+
   const navigate = useNavigate();
 
   const { handleLogin, handleRegister } = useApp();
@@ -23,6 +25,10 @@ export default function Auth({ isRegister = false }) {
       data = await handleRegister(formData);
     } else {
       data = await handleLogin(formData);
+    }
+
+    if (data.error) {
+      setErrors(data.error.message);
     }
   };
 
@@ -155,6 +161,7 @@ export default function Auth({ isRegister = false }) {
         >
           {isRegister ? "Register" : "Login"}
         </Button>
+        {errors && <Typography color="red">{errors}</Typography>}
         <Typography onClick={handleClick} style={{ cursor: "pointer" }}>
           {isRegister
             ? "Already have an account? Login"

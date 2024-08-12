@@ -20,7 +20,8 @@ const handleError = (error) => {
 
 export const getAllTeachers = async (page = 1, limit = 6) => {
   try {
-    const { token } = JSON.parse(localStorage.getItem("user"));
+    const userData = localStorage.getItem("user");
+    const { token } = userData && JSON.parse(userData);
     if (!token) {
       throw new Error("Not authorized, no token");
     }
@@ -39,7 +40,9 @@ export const getAllTeachers = async (page = 1, limit = 6) => {
 
 export const createTeacher = async (newTeacher) => {
   try {
-    const { token } = JSON.parse(localStorage.getItem("user"));
+    const userData = localStorage.getItem("user");
+    const { token } = userData && JSON.parse(userData);
+    // const { token } = JSON.parse(localStorage.getItem("user"));
     const response = await axios.post(API_URL, newTeacher, {
       headers: {
         "Content-Type": "application/json",

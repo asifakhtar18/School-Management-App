@@ -20,8 +20,8 @@ export const StudentProvider = ({ children }) => {
   const fetchStudents = async (page) => {
     const data = await getAllStudents(page);
 
-    setStudents(data.students);
-    setCount(data.totalPages);
+    setStudents(data?.students);
+    setCount(data?.totalPages);
   };
 
   const handleDeleteStudent = async (id) => {
