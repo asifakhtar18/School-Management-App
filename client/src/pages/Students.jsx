@@ -19,7 +19,7 @@ export default function Students() {
 
   const { openModal, setOpenModal } = useApp();
 
-  const { students, page, count, handleDeleteStudent } = useStudent();
+  const { students, page, count, handleDeleteStudent, setPage } = useStudent();
   const { classes } = useClasses();
 
   useEffect(() => {
@@ -54,6 +54,7 @@ export default function Students() {
           data={data || []}
           page={page}
           count={count}
+          onPageChange={setPage}
           columns={studentColumns}
           onEdit={setCurrentStudent}
           onDelete={handleDeleteStudent}

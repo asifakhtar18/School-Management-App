@@ -22,6 +22,10 @@ export default function Auth({ isRegister = false }) {
     e.preventDefault();
     let data = null;
     if (isRegister) {
+      if (formData.password !== formData.confirmPassword) {
+        setErrors("Passwords do not match");
+        return;
+      }
       data = await handleRegister(formData);
     } else {
       data = await handleLogin(formData);
@@ -50,16 +54,17 @@ export default function Auth({ isRegister = false }) {
   return (
     <Box
       component={motion.div}
-      initial={{ opacity: 0.3, x: 150 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ type: "tween", duration: 0.7 }}
+      initial={{ opacity: 0.3, scale: 0.7 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ type: "tween", duration: 1 }}
       sx={{
         display: "flex",
-        background: "#f0f0f0",
-        height: "100vh",
-        width: "100vw",
-        justifyContent: "center",
         alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+        background: "#f0f0f0",
+
+        width: "100vw",
       }}
     >
       <Box
@@ -77,7 +82,7 @@ export default function Auth({ isRegister = false }) {
         }}
       >
         <Typography variant="h3">Welcome!</Typography>
-        <Typography>We are please to see you!</Typography>
+        <Typography>We are pleased to see you!</Typography>
       </Box>
       <Box
         sx={{
